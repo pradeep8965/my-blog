@@ -104,6 +104,33 @@ const TIMELINE = [
   { year: "2019 – 2023", title: "Bachelor of Science", org: "Gyanodaya Group of Management & Technology", desc: "Undergraduate studies, 77.58%." },
 ];
 
+// EDIT THIS: Replace with real testimonials from colleagues/clients when you have them.
+const TESTIMONIALS = [
+  {
+    name: "Add a colleague's name",
+    role: "Team Lead, Dollor Infotech",
+    quote: "Replace this with a real quote about working with Pradeep - his reliability, technical skill, or problem-solving ability.",
+    initial: "?",
+  },
+  {
+    name: "Add a client's name",
+    role: "Project Client",
+    quote: "Replace this with feedback from a client project, e.g. about the CRM or chatbot work.",
+    initial: "?",
+  },
+];
+
+const GITHUB_USERNAME = "pradeep8965";
+
+// STEP REQUIRED: Replace this with YOUR Formspree endpoint.
+// 1. Go to https://formspree.io and sign up free
+// 2. Create a new form, it gives you a URL like: https://formspree.io/f/abcd1234
+// 3. Paste that URL below
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+// Your WhatsApp number in international format, no + or spaces
+const WHATSAPP_NUMBER = "919098925163";
+
 // ─── Icons ───────────────────────────────────────────────────────────────────
 const SearchIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>);
 const ArrowIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>);
@@ -112,6 +139,33 @@ const ClockIcon = () => (<svg width="14" height="14" viewBox="0 0 24 24" fill="n
 const MailIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>);
 const PhoneIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>);
 const LinkedinIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>);
+const SunIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>);
+const MoonIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>);
+const DownloadIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>);
+const StarIcon = () => (<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279L12 19.771l-7.416 3.642 1.48-8.279L0 9.306l8.332-1.151z"/></svg>);
+
+// ─── Theme System ────────────────────────────────────────────────────────────
+const THEMES = {
+  dark: {
+    bg: "#0a0a12", bgAlt: "#0f0f1f", cardBg: "rgba(255,255,255,0.03)", cardBgHover: "rgba(108,99,255,0.06)",
+    border: "rgba(255,255,255,0.07)", borderHover: "rgba(108,99,255,0.3)", text: "#f0f0f8", textMuted: "#888",
+    textDim: "#555", navBg: "rgba(10,10,18,0.95)", inputBg: "rgba(255,255,255,0.04)",
+  },
+  light: {
+    bg: "#f7f7fb", bgAlt: "#ffffff", cardBg: "#ffffff", cardBgHover: "#f0effe",
+    border: "rgba(0,0,0,0.08)", borderHover: "rgba(108,99,255,0.4)", text: "#16161f", textMuted: "#555",
+    textDim: "#999", navBg: "rgba(255,255,255,0.95)", inputBg: "#ffffff",
+  },
+};
+
+function useTheme() {
+  const [theme, setTheme] = useState("dark");
+  useEffect(() => {
+    document.body.style.background = THEMES[theme].bg;
+    document.body.style.transition = "background 0.3s ease";
+  }, [theme]);
+  return [theme, setTheme];
+}
 
 // ─── Scroll Reveal Hook ──────────────────────────────────────────────────────
 function useReveal() {
@@ -140,9 +194,10 @@ function Reveal({ children, delay = 0 }) {
 }
 
 // ─── Components ──────────────────────────────────────────────────────────────
-function Navbar({ onNavigate, currentPage }) {
+function Navbar({ onNavigate, currentPage, theme, setTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const t = THEMES[theme];
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
@@ -152,9 +207,9 @@ function Navbar({ onNavigate, currentPage }) {
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 100,
-      background: scrolled ? "rgba(10,10,18,0.95)" : "rgba(10,10,18,0.7)",
+      background: scrolled ? t.navBg : (theme === "dark" ? "rgba(10,10,18,0.7)" : "rgba(255,255,255,0.7)"),
       backdropFilter: "blur(16px)",
-      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+      borderBottom: scrolled ? `1px solid ${t.border}` : "1px solid transparent",
       padding: "0 24px", transition: "all 0.3s ease",
     }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
@@ -165,29 +220,46 @@ function Navbar({ onNavigate, currentPage }) {
             display: "flex", alignItems: "center", justifyContent: "center",
             fontWeight: 800, color: "#fff", fontSize: 16,
           }}>P</div>
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 17 }}>
+          <span style={{ color: t.text, fontWeight: 700, fontSize: 17 }}>
             Pradeep<span style={{ color: "#6C63FF" }}>.</span>dev
           </span>
         </button>
 
-        <div className="nav-links" style={{ display: "flex", gap: 4 }}>
+        <div className="nav-links" style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {links.map(p => (
             <button key={p} onClick={() => onNavigate(p)} style={{
               background: currentPage === p ? "rgba(108,99,255,0.15)" : "none",
-              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : "#999",
+              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : t.textMuted,
               fontWeight: 500, fontSize: 14, padding: "7px 14px", borderRadius: 8,
               textTransform: "capitalize", transition: "all 0.2s",
             }}>{p}</button>
           ))}
+          <a href="/my-blog/resume.pdf" download style={{
+            display: "flex", alignItems: "center", gap: 6, background: "rgba(108,99,255,0.12)",
+            border: "1px solid rgba(108,99,255,0.3)", borderRadius: 8, padding: "7px 14px",
+            color: "#9d97ff", fontSize: 13, fontWeight: 600, textDecoration: "none", marginLeft: 8,
+          }}><DownloadIcon /> Resume</a>
+          <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} style={{
+            background: t.cardBg, border: `1px solid ${t.border}`, borderRadius: 8,
+            width: 34, height: 34, display: "flex", alignItems: "center", justifyContent: "center",
+            color: t.textMuted, cursor: "pointer", marginLeft: 4,
+          }}>{theme === "dark" ? <SunIcon /> : <MoonIcon />}</button>
         </div>
 
-        <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} style={{
-          display: "none", background: "none", border: "none", color: "#fff", cursor: "pointer",
-        }}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {mobileOpen ? <path d="M18 6 6 18M6 6l12 12"/> : <path d="M4 6h16M4 12h16M4 18h16"/>}
-          </svg>
-        </button>
+        <div style={{ display: "none", alignItems: "center", gap: 8 }} className="mobile-controls">
+          <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} style={{
+            background: t.cardBg, border: `1px solid ${t.border}`, borderRadius: 8,
+            width: 34, height: 34, display: "flex", alignItems: "center", justifyContent: "center",
+            color: t.textMuted, cursor: "pointer",
+          }}>{theme === "dark" ? <SunIcon /> : <MoonIcon />}</button>
+          <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} style={{
+            background: "none", border: "none", color: t.text, cursor: "pointer",
+          }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {mobileOpen ? <path d="M18 6 6 18M6 6l12 12"/> : <path d="M4 6h16M4 12h16M4 18h16"/>}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {mobileOpen && (
@@ -195,18 +267,22 @@ function Navbar({ onNavigate, currentPage }) {
           {links.map(p => (
             <button key={p} onClick={() => { onNavigate(p); setMobileOpen(false); }} style={{
               background: currentPage === p ? "rgba(108,99,255,0.15)" : "none",
-              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : "#999",
+              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : t.textMuted,
               fontWeight: 500, fontSize: 15, padding: "12px 16px", borderRadius: 8,
               textTransform: "capitalize", textAlign: "left",
             }}>{p}</button>
           ))}
+          <a href="/my-blog/resume.pdf" download style={{
+            display: "flex", alignItems: "center", gap: 8, color: "#9d97ff", fontSize: 15, fontWeight: 600,
+            padding: "12px 16px", textDecoration: "none",
+          }}><DownloadIcon /> Download Resume</a>
         </div>
       )}
 
       <style>{`
         @media (max-width: 760px) {
           .nav-links { display: none !important; }
-          .mobile-toggle { display: block !important; }
+          .mobile-controls { display: flex !important; }
         }
       `}</style>
     </nav>
@@ -299,13 +375,14 @@ function Hero({ onNavigate }) {
   );
 }
 
-function SectionHeading({ eyebrow, title, sub }) {
+function SectionHeading({ eyebrow, title, sub, theme = "dark" }) {
+  const t = THEMES[theme];
   return (
     <Reveal>
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         <div style={{ color: "#6C63FF", fontSize: 13, fontWeight: 700, letterSpacing: 1.5, marginBottom: 10 }}>{eyebrow}</div>
-        <h2 style={{ color: "#f0f0f8", fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800, margin: "0 0 12px" }}>{title}</h2>
-        {sub && <p style={{ color: "#777", fontSize: 15, maxWidth: 480, margin: "0 auto" }}>{sub}</p>}
+        <h2 style={{ color: t.text, fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800, margin: "0 0 12px" }}>{title}</h2>
+        {sub && <p style={{ color: t.textMuted, fontSize: 15, maxWidth: 480, margin: "0 auto" }}>{sub}</p>}
       </div>
     </Reveal>
   );
@@ -375,6 +452,8 @@ function PostDetail({ post, onBack }) {
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         {post.tags.map(t => (<span key={t} style={{ background: "rgba(62,207,207,0.08)", color: "#3ECFCF", fontSize: 12, padding: "5px 14px", borderRadius: 8, fontWeight: 600, border: "1px solid rgba(62,207,207,0.2)" }}>{t}</span>))}
       </div>
+
+      <GiscusComments theme="dark" />
     </div>
   );
 }
@@ -416,7 +495,7 @@ function BlogList({ onSelectPost }) {
       {filtered.length === 0 ? (
         <div style={{ textAlign: "center", padding: "60px 0", color: "#555", fontSize: 16 }}>No articles match your search.</div>
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24, marginBottom: 64 }}>
           {filtered.map((post, i) => (
             <Reveal key={post.id} delay={i * 0.05}>
               <PostCard post={post} onClick={onSelectPost} />
@@ -424,6 +503,8 @@ function BlogList({ onSelectPost }) {
           ))}
         </div>
       )}
+
+      <Reveal><Newsletter theme="dark" /></Reveal>
     </div>
   );
 }
@@ -520,6 +601,142 @@ function TimelineSection() {
   );
 }
 
+function GitHubStats({ theme }) {
+  const t = THEMES[theme];
+  return (
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="OPEN SOURCE" title="GitHub Activity" sub="Live stats pulled directly from my GitHub profile" theme={theme} />
+      <Reveal>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, alignItems: "center" }}>
+          <img
+            src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&theme=${theme === "dark" ? "dark" : "default"}&hide_border=true&bg_color=00000000`}
+            alt="GitHub Stats"
+            style={{ maxWidth: "100%", borderRadius: 12 }}
+            onError={(e) => { e.target.style.display = "none"; }}
+          />
+          <img
+            src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${GITHUB_USERNAME}&layout=compact&theme=${theme === "dark" ? "dark" : "default"}&hide_border=true&bg_color=00000000`}
+            alt="Top Languages"
+            style={{ maxWidth: "100%", borderRadius: 12 }}
+            onError={(e) => { e.target.style.display = "none"; }}
+          />
+          <a href={`https://github.com/${GITHUB_USERNAME}`} target="_blank" rel="noreferrer" style={{
+            color: "#6C63FF", textDecoration: "none", fontWeight: 600, fontSize: 14,
+          }}>View full profile on GitHub →</a>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
+
+function TestimonialsSection({ theme }) {
+  const t = THEMES[theme];
+  return (
+    <div style={{ maxWidth: 900, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="FEEDBACK" title="What People Say" theme={theme} />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 24 }}>
+        {TESTIMONIALS.map((item, i) => (
+          <Reveal key={item.name} delay={i * 0.1}>
+            <div style={{
+              background: t.cardBg, border: `1px solid ${t.border}`, borderRadius: 16, padding: 28, height: "100%", boxSizing: "border-box",
+            }}>
+              <div style={{ display: "flex", gap: 3, marginBottom: 16, color: "#FFB800" }}>
+                {[...Array(5)].map((_, i) => <StarIcon key={i} />)}
+              </div>
+              <p style={{ color: t.textMuted, fontSize: 14.5, lineHeight: 1.7, margin: "0 0 22px", fontStyle: "italic" }}>"{item.quote}"</p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div style={{
+                  width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
+                  display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, color: "#fff", fontSize: 14,
+                }}>{item.initial}</div>
+                <div>
+                  <div style={{ color: t.text, fontWeight: 700, fontSize: 13.5 }}>{item.name}</div>
+                  <div style={{ color: t.textDim, fontSize: 12 }}>{item.role}</div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Newsletter({ theme }) {
+  const t = THEMES[theme];
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Uses the same Formspree endpoint as the contact form to collect newsletter emails.
+    if (!FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
+      fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify({ subject: "Newsletter signup", email }),
+      }).catch(() => {});
+    }
+    setSubscribed(true);
+  };
+
+  return (
+    <div style={{
+      background: "linear-gradient(135deg, rgba(108,99,255,0.1), rgba(62,207,207,0.06))",
+      border: "1px solid rgba(108,99,255,0.2)", borderRadius: 20,
+      padding: "40px 32px", maxWidth: 640, margin: "0 auto 0", textAlign: "center",
+    }}>
+      <h3 style={{ color: t.text, fontSize: 20, fontWeight: 800, margin: "0 0 8px" }}>Get notified about new articles</h3>
+      <p style={{ color: t.textMuted, fontSize: 14, margin: "0 0 22px" }}>No spam, just backend engineering insights when I publish something new.</p>
+      {subscribed ? (
+        <p style={{ color: "#3ECFCF", fontWeight: 600, margin: 0 }}>✓ Thanks for subscribing!</p>
+      ) : (
+        <form onSubmit={handleSubmit} style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "center" }}>
+          <input required type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="your@email.com" style={{
+            flex: 1, minWidth: 200, background: t.inputBg, border: `1px solid ${t.border}`, borderRadius: 10,
+            padding: "12px 16px", color: t.text, fontSize: 14, outline: "none",
+          }}/>
+          <button type="submit" style={{
+            background: "linear-gradient(135deg, #6C63FF, #3ECFCF)", border: "none", borderRadius: 10,
+            padding: "12px 24px", color: "#fff", fontWeight: 700, fontSize: 14, cursor: "pointer",
+          }}>Subscribe</button>
+        </form>
+      )}
+    </div>
+  );
+}
+
+function GiscusComments({ theme }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    ref.current.innerHTML = "";
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    // ⚠️ EDIT THESE: Set up Giscus at https://giscus.app using your my-blog GitHub repo,
+    // then paste the data-repo-id and data-category-id values it gives you below.
+    script.setAttribute("data-repo", `${GITHUB_USERNAME}/my-blog`);
+    script.setAttribute("data-repo-id", "R_kgDOTIa9Yg");
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDOTIa9Ys4DAM2R");
+    script.setAttribute("data-mapping", "pathname");
+    script.setAttribute("data-reactions-enabled", "1");
+    script.setAttribute("data-theme", theme === "dark" ? "dark" : "light");
+    script.crossOrigin = "anonymous";
+    script.async = true;
+    ref.current.appendChild(script);
+  }, [theme]);
+  return (
+    <div style={{ maxWidth: 720, margin: "40px auto 0", padding: "0 24px" }}>
+      <h3 style={{ color: THEMES[theme].text, fontSize: 16, fontWeight: 700, margin: "0 0 16px" }}>Comments</h3>
+      <div ref={ref} />
+      <p style={{ color: THEMES[theme].textDim, fontSize: 12, marginTop: 8 }}>
+        Comments power by Giscus — connect it at giscus.app to activate (see code comment).
+      </p>
+    </div>
+  );
+}
+
 function AboutPage() {
   return (
     <div style={{ maxWidth: 760, margin: "0 auto", padding: "80px 24px" }}>
@@ -545,20 +762,14 @@ function AboutPage() {
           </p>
         </div>
       </Reveal>
+      <TestimonialsSection theme="dark" />
+      <GitHubStats theme="dark" />
     </div>
   );
 }
 
-// ⚠️ STEP REQUIRED: Replace this with YOUR Formspree endpoint.
-// 1. Go to https://formspree.io and sign up free
-// 2. Create a new form, it gives you a URL like: https://formspree.io/f/abcd1234
-// 3. Paste that URL below
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqgjdrb";
-
-// Your WhatsApp number in international format, no + or spaces
-const WHATSAPP_NUMBER = "919098925163";
-
 const WhatsAppIcon = () => (
+
   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12.001 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.001L2 22l5.143-1.323A9.953 9.953 0 0 0 12.001 22C17.524 22 22 17.523 22 12S17.524 2 12.001 2zm0 18.07a8.04 8.04 0 0 1-4.103-1.122l-.294-.175-3.05.784.82-2.97-.192-.306A8.05 8.05 0 1 1 20.05 12.01 8.06 8.06 0 0 1 12 20.07z"/>
@@ -591,9 +802,20 @@ function ContactSection() {
     }
   };
 
-  const whatsappHref = () => {
-    const text = `Hi Pradeep, I'm ${form.name || "[name]"}.%0A%0AEmail: ${form.email || "-"}%0APhone: ${form.phone || "-"}%0ACompany: ${form.company || "-"}%0ABudget: ${form.budget || "-"}%0ASubject: ${form.subject || "-"}%0A%0AMessage: ${form.message || "-"}`;
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+  const buildWhatsappUrl = () => {
+    const text = `Hi Pradeep, I'm ${form.name || "[name]"}.\n\nEmail: ${form.email || "-"}\nPhone: ${form.phone || "-"}\nCompany: ${form.company || "-"}\nBudget: ${form.budget || "-"}\nSubject: ${form.subject || "-"}\n\nMessage: ${form.message || "-"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  };
+
+  const handleWhatsappClick = (e) => {
+    e.preventDefault();
+    if (!form.name || !form.message) {
+      alert("Please fill in at least your name and message first.");
+      return;
+    }
+    // window.location.href works reliably on mobile browsers to hand off to the WhatsApp app,
+    // unlike target="_blank" which mobile browsers / in-app browsers often block.
+    window.location.href = buildWhatsappUrl();
   };
 
   return (
@@ -645,11 +867,11 @@ function ContactSection() {
                 opacity: status === "sending" ? 0.7 : 1,
               }}>{status === "sending" ? "Sending..." : "Send via Email"}</button>
 
-              <a href={whatsappHref()} target="_blank" rel="noreferrer" onClick={(e) => { if (!form.name || !form.message) { e.preventDefault(); alert("Please fill in at least your name and message first."); } }} style={{
+              <button type="button" onClick={handleWhatsappClick} style={{
                 flex: 1, minWidth: 180, display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 background: "#25D366", border: "none", borderRadius: 10, padding: "14px 28px",
-                color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer", textDecoration: "none",
-              }}><WhatsAppIcon /> Send via WhatsApp</a>
+                color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
+              }}><WhatsAppIcon /> Send via WhatsApp</button>
             </div>
 
             {status === "error" && (
@@ -695,16 +917,52 @@ function Footer() {
 }
 
 // ─── App ─────────────────────────────────────────────────────────────────────
+const PAGE_META = {
+  home: { title: "Pradeep Prajapati — Full Stack Developer Blog", desc: "Backend engineering blog by Pradeep Prajapati. Node.js, Laravel, microservices, and real production lessons." },
+  projects: { title: "Projects — Pradeep Prajapati", desc: "Featured backend projects: Bulk SMS platform, CRM system, and Telegram automation by Pradeep Prajapati." },
+  skills: { title: "Skills — Pradeep Prajapati", desc: "Technical skills of Pradeep Prajapati: Node.js, Laravel, Redis, Docker, and more." },
+  timeline: { title: "Experience — Pradeep Prajapati", desc: "Career timeline and education of Pradeep Prajapati, Full Stack Developer." },
+  about: { title: "About — Pradeep Prajapati", desc: "Learn more about Pradeep Prajapati, a Full Stack Developer specializing in backend systems." },
+  contact: { title: "Contact — Pradeep Prajapati", desc: "Get in touch with Pradeep Prajapati for backend development and freelance work." },
+  post: { title: "Article — Pradeep Prajapati", desc: "Backend engineering article by Pradeep Prajapati." },
+};
+
+function useSEO(page, post) {
+  useEffect(() => {
+    const meta = page === "post" && post
+      ? { title: `${post.title} — Pradeep Prajapati`, desc: post.excerpt }
+      : PAGE_META[page] || PAGE_META.home;
+    document.title = meta.title;
+    const setTag = (name, content, isProperty) => {
+      const attr = isProperty ? "property" : "name";
+      let tag = document.querySelector(`meta[${attr}="${name}"]`);
+      if (!tag) { tag = document.createElement("meta"); tag.setAttribute(attr, name); document.head.appendChild(tag); }
+      tag.setAttribute("content", content);
+    };
+    setTag("description", meta.desc);
+    setTag("og:title", meta.title, true);
+    setTag("og:description", meta.desc, true);
+    setTag("og:type", "website", true);
+    setTag("twitter:card", "summary", true);
+    setTag("twitter:title", meta.title, true);
+    setTag("twitter:description", meta.desc, true);
+  }, [page, post]);
+}
+
 export default function App() {
   const [page, setPage] = useState("home");
   const [selectedPost, setSelectedPost] = useState(null);
+  const [theme, setTheme] = useTheme();
+  const t = THEMES[theme];
+
+  useSEO(page, selectedPost);
 
   const navigate = (p) => { setPage(p); setSelectedPost(null); window.scrollTo(0, 0); };
   const handleSelectPost = (post) => { setSelectedPost(post); setPage("post"); window.scrollTo(0, 0); };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0a0a12", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
-      <Navbar onNavigate={navigate} currentPage={page} />
+    <div style={{ minHeight: "100vh", background: t.bg, fontFamily: "'Segoe UI', system-ui, sans-serif", transition: "background 0.3s ease" }}>
+      <Navbar onNavigate={navigate} currentPage={page} theme={theme} setTheme={setTheme} />
       {page === "home" && <>
         <Hero onNavigate={navigate} />
         <BlogList onSelectPost={handleSelectPost} />
