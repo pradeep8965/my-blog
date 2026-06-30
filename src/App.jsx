@@ -66,69 +66,149 @@ const POSTS = [
   },
 ];
 
+const SKILLS = [
+  { name: "Node.js", level: 90 },
+  { name: "Moleculer.js (Microservices)", level: 85 },
+  { name: "PHP / Laravel", level: 85 },
+  { name: "REST API Design", level: 90 },
+  { name: "MySQL", level: 80 },
+  { name: "Redis", level: 82 },
+  { name: "Docker", level: 75 },
+  { name: "React.js", level: 70 },
+];
+
+const PROJECTS = [
+  {
+    title: "Bulk SMS Sender Platform",
+    desc: "Scalable microservices-based SMS gateway handling high-volume message processing with SMPP, Redis queues, and intelligent vendor routing.",
+    tags: ["Node.js", "Moleculer.js", "Redis", "Docker", "SMPP"],
+    highlight: "8 independent microservices",
+  },
+  {
+    title: "After-Sales Service CRM",
+    desc: "Full-featured Laravel CRM with 7 role-based access levels managing the complete service lifecycle from complaint to resolution.",
+    tags: ["Laravel", "PHP", "MySQL", "RBAC"],
+    highlight: "7 user roles, full lifecycle mgmt",
+  },
+  {
+    title: "Telegram Visa & Passport Bot",
+    desc: "Automated chatbot for an international airline client handling visa/passport queries with predefined workflows and real-time interaction.",
+    tags: ["Node.js", "Telegram API", "Automation"],
+    highlight: "Reduced manual workload significantly",
+  },
+];
+
+const TIMELINE = [
+  { year: "2023 – Present", title: "Full Stack Developer", org: "Dollor Infotech Pvt Ltd, Neemuch", desc: "Building scalable backend systems, microservices, and SMS infrastructure." },
+  { year: "2023 – 2025", title: "Master of Science", org: "Gyanodaya Group of Management & Technology", desc: "Postgraduate studies, 70.92%." },
+  { year: "2019 – 2023", title: "Bachelor of Science", org: "Gyanodaya Group of Management & Technology", desc: "Undergraduate studies, 77.58%." },
+];
+
 // ─── Icons ───────────────────────────────────────────────────────────────────
-const SearchIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-  </svg>
-);
-const ArrowIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M5 12h14M12 5l7 7-7 7"/>
-  </svg>
-);
-const BackIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M19 12H5M12 19l-7-7 7-7"/>
-  </svg>
-);
-const ClockIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-  </svg>
-);
-const MenuIcon = ({ open }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    {open ? <path d="M18 6 6 18M6 6l12 12"/> : <path d="M4 6h16M4 12h16M4 18h16"/>}
-  </svg>
-);
+const SearchIcon = () => (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>);
+const ArrowIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>);
+const BackIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>);
+const ClockIcon = () => (<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>);
+const MailIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>);
+const PhoneIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>);
+const LinkedinIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>);
+
+// ─── Scroll Reveal Hook ──────────────────────────────────────────────────────
+function useReveal() {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.15 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, visible];
+}
+
+function Reveal({ children, delay = 0 }) {
+  const [ref, visible] = useReveal();
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? "translateY(0)" : "translateY(24px)",
+      transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+    }}>{children}</div>
+  );
+}
 
 // ─── Components ──────────────────────────────────────────────────────────────
 function Navbar({ onNavigate, currentPage }) {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const links = ["home", "projects", "skills", "timeline", "about", "contact"];
   return (
     <nav style={{
       position: "sticky", top: 0, zIndex: 100,
-      background: "rgba(10,10,18,0.92)", backdropFilter: "blur(16px)",
-      borderBottom: "1px solid rgba(255,255,255,0.06)",
-      padding: "0 24px",
+      background: scrolled ? "rgba(10,10,18,0.95)" : "rgba(10,10,18,0.7)",
+      backdropFilter: "blur(16px)",
+      borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+      padding: "0 24px", transition: "all 0.3s ease",
     }}>
       <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-        <button onClick={() => onNavigate("home")} style={{
-          background: "none", border: "none", cursor: "pointer",
-          display: "flex", alignItems: "center", gap: 10,
-        }}>
+        <button onClick={() => onNavigate("home")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 34, height: 34, borderRadius: 8,
             background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
             display: "flex", alignItems: "center", justifyContent: "center",
             fontWeight: 800, color: "#fff", fontSize: 16,
           }}>P</div>
-          <span style={{ color: "#fff", fontWeight: 700, fontSize: 17, fontFamily: "'Segoe UI', sans-serif" }}>
+          <span style={{ color: "#fff", fontWeight: 700, fontSize: 17 }}>
             Pradeep<span style={{ color: "#6C63FF" }}>.</span>dev
           </span>
         </button>
-        <div style={{ display: "flex", gap: 8 }}>
-          {["home", "about"].map(p => (
-            <button key={p} onClick={() => { onNavigate(p); setMenuOpen(false); }} style={{
+
+        <div className="nav-links" style={{ display: "flex", gap: 4 }}>
+          {links.map(p => (
+            <button key={p} onClick={() => onNavigate(p)} style={{
               background: currentPage === p ? "rgba(108,99,255,0.15)" : "none",
-              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : "#aaa",
-              fontWeight: 500, fontSize: 14, padding: "6px 16px", borderRadius: 6,
+              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : "#999",
+              fontWeight: 500, fontSize: 14, padding: "7px 14px", borderRadius: 8,
               textTransform: "capitalize", transition: "all 0.2s",
             }}>{p}</button>
           ))}
         </div>
+
+        <button className="mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} style={{
+          display: "none", background: "none", border: "none", color: "#fff", cursor: "pointer",
+        }}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            {mobileOpen ? <path d="M18 6 6 18M6 6l12 12"/> : <path d="M4 6h16M4 12h16M4 18h16"/>}
+          </svg>
+        </button>
       </div>
+
+      {mobileOpen && (
+        <div style={{ display: "flex", flexDirection: "column", paddingBottom: 16, gap: 4 }}>
+          {links.map(p => (
+            <button key={p} onClick={() => { onNavigate(p); setMobileOpen(false); }} style={{
+              background: currentPage === p ? "rgba(108,99,255,0.15)" : "none",
+              border: "none", cursor: "pointer", color: currentPage === p ? "#6C63FF" : "#999",
+              fontWeight: 500, fontSize: 15, padding: "12px 16px", borderRadius: 8,
+              textTransform: "capitalize", textAlign: "left",
+            }}>{p}</button>
+          ))}
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 760px) {
+          .nav-links { display: none !important; }
+          .mobile-toggle { display: block !important; }
+        }
+      `}</style>
     </nav>
   );
 }
@@ -137,48 +217,97 @@ function Hero({ onNavigate }) {
   return (
     <div style={{
       background: "linear-gradient(160deg, #0a0a12 0%, #0f0f1f 60%, #0a0a12 100%)",
-      padding: "90px 24px 80px", textAlign: "center", position: "relative", overflow: "hidden",
+      padding: "80px 24px 70px", textAlign: "center", position: "relative", overflow: "hidden",
     }}>
-      <div style={{
-        position: "absolute", top: "20%", left: "10%", width: 300, height: 300,
-        background: "radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%)",
+      <div className="blob blob1" style={{
+        position: "absolute", top: "15%", left: "8%", width: 320, height: 320,
+        background: "radial-gradient(circle, rgba(108,99,255,0.14) 0%, transparent 70%)",
         borderRadius: "50%", filter: "blur(40px)",
       }}/>
-      <div style={{
-        position: "absolute", top: "10%", right: "8%", width: 200, height: 200,
-        background: "radial-gradient(circle, rgba(62,207,207,0.1) 0%, transparent 70%)",
+      <div className="blob blob2" style={{
+        position: "absolute", top: "5%", right: "5%", width: 220, height: 220,
+        background: "radial-gradient(circle, rgba(62,207,207,0.12) 0%, transparent 70%)",
         borderRadius: "50%", filter: "blur(30px)",
       }}/>
-      <div style={{ position: "relative", maxWidth: 700, margin: "0 auto" }}>
-        <div style={{
-          display: "inline-block", background: "rgba(108,99,255,0.12)",
-          border: "1px solid rgba(108,99,255,0.3)", borderRadius: 100,
-          padding: "6px 18px", marginBottom: 28,
-          color: "#9d97ff", fontSize: 13, fontWeight: 600, letterSpacing: 1,
-        }}>BACKEND ENGINEERING BLOG</div>
-        <h1 style={{
-          color: "#fff", fontSize: "clamp(32px, 6vw, 58px)",
-          fontWeight: 800, lineHeight: 1.15, margin: "0 0 20px",
-          fontFamily: "'Segoe UI', sans-serif",
-        }}>
-          Deep dives into<br/>
-          <span style={{ background: "linear-gradient(90deg, #6C63FF, #3ECFCF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-            scalable systems
-          </span>
-        </h1>
-        <p style={{ color: "#888", fontSize: 17, lineHeight: 1.7, margin: "0 0 36px" }}>
-          Real-world backend engineering from a developer who's built SMS gateways, microservices, and CRM systems in production. Node.js · Laravel · Redis · Docker.
-        </p>
-        <button onClick={() => document.getElementById("posts-section").scrollIntoView({ behavior: "smooth" })} style={{
-          background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
-          border: "none", borderRadius: 10, padding: "14px 32px",
-          color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
-          display: "inline-flex", alignItems: "center", gap: 8,
-        }}>
-          Read Articles <ArrowIcon />
-        </button>
+
+      <div style={{ position: "relative", maxWidth: 760, margin: "0 auto" }}>
+        {/* Profile Photo */}
+        <Reveal>
+          <div style={{
+            width: 120, height: 120, borderRadius: "50%", margin: "0 auto 28px",
+            background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
+            padding: 3, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 50px rgba(108,99,255,0.25)",
+          }}>
+            <img
+              src="https://via.placeholder.com/300x300/14141f/6C63FF?text=PP"
+              alt="Pradeep Prajapati"
+              style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover", display: "block", border: "3px solid #0a0a12" }}
+            />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div style={{
+            display: "inline-block", background: "rgba(108,99,255,0.12)",
+            border: "1px solid rgba(108,99,255,0.3)", borderRadius: 100,
+            padding: "6px 18px", marginBottom: 24,
+            color: "#9d97ff", fontSize: 13, fontWeight: 600, letterSpacing: 1,
+          }}>FULL-STACK DEVELOPER · OPEN TO WORK</div>
+        </Reveal>
+
+        <Reveal delay={0.2}>
+          <h1 style={{
+            color: "#fff", fontSize: "clamp(32px, 6vw, 56px)",
+            fontWeight: 800, lineHeight: 1.15, margin: "0 0 18px",
+          }}>
+            Hi, I'm Pradeep —<br/>
+            <span style={{ background: "linear-gradient(90deg, #6C63FF, #3ECFCF)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              I build scalable backends
+            </span>
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.3}>
+          <p style={{ color: "#888", fontSize: 17, lineHeight: 1.7, margin: "0 0 36px", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
+            2+ years building SMS gateways, microservices, and CRM systems in production. Node.js · Laravel · Redis · Docker.
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.4}>
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <button onClick={() => onNavigate("projects")} style={{
+              background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
+              border: "none", borderRadius: 10, padding: "13px 28px",
+              color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
+              display: "inline-flex", alignItems: "center", gap: 8,
+            }}>View Projects <ArrowIcon /></button>
+            <button onClick={() => onNavigate("contact")} style={{
+              background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: 10, padding: "13px 28px", color: "#ddd",
+              fontWeight: 700, fontSize: 15, cursor: "pointer",
+            }}>Get in Touch</button>
+          </div>
+        </Reveal>
       </div>
+
+      <style>{`
+        @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+        .blob1 { animation: float 8s ease-in-out infinite; }
+        .blob2 { animation: float 10s ease-in-out infinite reverse; }
+      `}</style>
     </div>
+  );
+}
+
+function SectionHeading({ eyebrow, title, sub }) {
+  return (
+    <Reveal>
+      <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div style={{ color: "#6C63FF", fontSize: 13, fontWeight: 700, letterSpacing: 1.5, marginBottom: 10 }}>{eyebrow}</div>
+        <h2 style={{ color: "#f0f0f8", fontSize: "clamp(24px, 4vw, 34px)", fontWeight: 800, margin: "0 0 12px" }}>{title}</h2>
+        {sub && <p style={{ color: "#777", fontSize: 15, maxWidth: 480, margin: "0 auto" }}>{sub}</p>}
+      </div>
+    </Reveal>
   );
 }
 
@@ -194,33 +323,19 @@ function PostCard({ post, onClick }) {
         border: `1px solid ${hovered ? "rgba(108,99,255,0.3)" : "rgba(255,255,255,0.07)"}`,
         borderRadius: 16, padding: "28px 28px 24px",
         cursor: "pointer", transition: "all 0.25s",
-        transform: hovered ? "translateY(-3px)" : "none",
-        boxShadow: hovered ? "0 12px 40px rgba(108,99,255,0.1)" : "none",
+        transform: hovered ? "translateY(-4px)" : "none",
+        boxShadow: hovered ? "0 16px 40px rgba(108,99,255,0.12)" : "none",
       }}
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-        <span style={{
-          background: "rgba(108,99,255,0.15)", color: "#9d97ff",
-          fontSize: 12, fontWeight: 600, padding: "4px 12px",
-          borderRadius: 100, letterSpacing: 0.5,
-        }}>{post.category}</span>
-        <span style={{ color: "#555", fontSize: 12, display: "flex", alignItems: "center", gap: 5 }}>
-          <ClockIcon /> {post.readTime}
-        </span>
+        <span style={{ background: "rgba(108,99,255,0.15)", color: "#9d97ff", fontSize: 12, fontWeight: 600, padding: "4px 12px", borderRadius: 100 }}>{post.category}</span>
+        <span style={{ color: "#555", fontSize: 12, display: "flex", alignItems: "center", gap: 5 }}><ClockIcon /> {post.readTime}</span>
       </div>
-      <h2 style={{
-        color: "#f0f0f8", fontSize: 19, fontWeight: 700, lineHeight: 1.4,
-        margin: "0 0 12px", fontFamily: "'Segoe UI', sans-serif",
-      }}>{post.title}</h2>
+      <h3 style={{ color: "#f0f0f8", fontSize: 19, fontWeight: 700, lineHeight: 1.4, margin: "0 0 12px" }}>{post.title}</h3>
       <p style={{ color: "#777", fontSize: 14, lineHeight: 1.7, margin: "0 0 20px" }}>{post.excerpt}</p>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          {post.tags.slice(0, 2).map(t => (
-            <span key={t} style={{
-              background: "rgba(62,207,207,0.08)", color: "#3ECFCF",
-              fontSize: 11, padding: "3px 10px", borderRadius: 6, fontWeight: 600,
-            }}>{t}</span>
-          ))}
+          {post.tags.slice(0, 2).map(t => (<span key={t} style={{ background: "rgba(62,207,207,0.08)", color: "#3ECFCF", fontSize: 11, padding: "3px 10px", borderRadius: 6, fontWeight: 600 }}>{t}</span>))}
         </div>
         <span style={{ color: "#555", fontSize: 12 }}>{post.date}</span>
       </div>
@@ -235,38 +350,19 @@ function PostDetail({ post, onBack }) {
       <button onClick={onBack} style={{
         background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
         color: "#aaa", borderRadius: 8, padding: "8px 16px", cursor: "pointer",
-        display: "flex", alignItems: "center", gap: 8, marginBottom: 36,
-        fontSize: 13, fontWeight: 500,
+        display: "flex", alignItems: "center", gap: 8, marginBottom: 36, fontSize: 13, fontWeight: 500,
       }}><BackIcon /> Back to Blog</button>
 
       <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 20, flexWrap: "wrap" }}>
-        <span style={{
-          background: "rgba(108,99,255,0.15)", color: "#9d97ff",
-          fontSize: 12, fontWeight: 600, padding: "4px 14px", borderRadius: 100,
-        }}>{post.category}</span>
-        <span style={{ color: "#555", fontSize: 13, display: "flex", alignItems: "center", gap: 5 }}>
-          <ClockIcon /> {post.readTime}
-        </span>
+        <span style={{ background: "rgba(108,99,255,0.15)", color: "#9d97ff", fontSize: 12, fontWeight: 600, padding: "4px 14px", borderRadius: 100 }}>{post.category}</span>
+        <span style={{ color: "#555", fontSize: 13, display: "flex", alignItems: "center", gap: 5 }}><ClockIcon /> {post.readTime}</span>
         <span style={{ color: "#555", fontSize: 13 }}>{post.date}</span>
       </div>
 
-      <h1 style={{
-        color: "#f0f0f8", fontSize: "clamp(24px, 4vw, 38px)",
-        fontWeight: 800, lineHeight: 1.3, margin: "0 0 24px",
-        fontFamily: "'Segoe UI', sans-serif",
-      }}>{post.title}</h1>
+      <h1 style={{ color: "#f0f0f8", fontSize: "clamp(24px, 4vw, 38px)", fontWeight: 800, lineHeight: 1.3, margin: "0 0 24px" }}>{post.title}</h1>
+      <p style={{ color: "#9d97ff", fontSize: 17, lineHeight: 1.7, margin: "0 0 36px", fontStyle: "italic", borderLeft: "3px solid #6C63FF", paddingLeft: 20 }}>{post.excerpt}</p>
 
-      <p style={{
-        color: "#9d97ff", fontSize: 17, lineHeight: 1.7,
-        margin: "0 0 36px", fontStyle: "italic",
-        borderLeft: "3px solid #6C63FF", paddingLeft: 20,
-      }}>{post.excerpt}</p>
-
-      <div style={{
-        borderTop: "1px solid rgba(255,255,255,0.07)",
-        borderBottom: "1px solid rgba(255,255,255,0.07)",
-        padding: "32px 0", margin: "0 0 32px",
-      }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", padding: "32px 0", margin: "0 0 32px" }}>
         {post.content.split("\n\n").map((para, i) => {
           if (para.startsWith("**") && para.endsWith("**")) {
             return <h3 key={i} style={{ color: "#f0f0f8", fontSize: 18, fontWeight: 700, margin: "28px 0 12px" }}>{para.replace(/\*\*/g, "")}</h3>;
@@ -277,72 +373,7 @@ function PostDetail({ post, onBack }) {
       </div>
 
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        {post.tags.map(t => (
-          <span key={t} style={{
-            background: "rgba(62,207,207,0.08)", color: "#3ECFCF",
-            fontSize: 12, padding: "5px 14px", borderRadius: 8, fontWeight: 600,
-            border: "1px solid rgba(62,207,207,0.2)",
-          }}>{t}</span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function AboutPage() {
-  return (
-    <div style={{ maxWidth: 760, margin: "0 auto", padding: "64px 24px" }}>
-      <div style={{
-        background: "linear-gradient(135deg, rgba(108,99,255,0.1), rgba(62,207,207,0.05))",
-        border: "1px solid rgba(108,99,255,0.2)",
-        borderRadius: 20, padding: "48px 40px", marginBottom: 40,
-      }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 24, marginBottom: 32, flexWrap: "wrap" }}>
-          <div style={{
-            width: 72, height: 72, borderRadius: 16,
-            background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 30, fontWeight: 800, color: "#fff", flexShrink: 0,
-          }}>P</div>
-          <div>
-            <h1 style={{ color: "#f0f0f8", fontSize: 28, fontWeight: 800, margin: "0 0 6px" }}>Pradeep Prajapati</h1>
-            <p style={{ color: "#6C63FF", fontWeight: 600, margin: 0, fontSize: 15 }}>Full-Stack Developer · Backend Specialist</p>
-            <p style={{ color: "#555", fontSize: 13, margin: "4px 0 0" }}>Neemuch, Madhya Pradesh, India</p>
-          </div>
-        </div>
-        <p style={{ color: "#888", lineHeight: 1.8, fontSize: 16, margin: 0 }}>
-          Full Stack Developer with 2+ years of experience specializing in backend development. I've built high-volume SMS gateway platforms, microservices architectures, and CRM systems in production. I write about the real challenges of backend engineering — architecture decisions, performance tradeoffs, and practical patterns that work at scale.
-        </p>
-      </div>
-
-      {[
-        { label: "Languages & Frameworks", items: ["Node.js", "Moleculer.js", "React.js", "PHP (Laravel)", "HTML / CSS / Bootstrap"] },
-        { label: "Backend & Architecture", items: ["Microservices", "REST API Development", "System Design", "SMPP Protocol", "API Integration"] },
-        { label: "Databases & Tools", items: ["MySQL", "Redis", "Docker", "Kannel", "Prisma ORM", "Git"] },
-      ].map(section => (
-        <div key={section.label} style={{ marginBottom: 32 }}>
-          <h3 style={{ color: "#9d97ff", fontSize: 13, fontWeight: 600, letterSpacing: 1, margin: "0 0 14px", textTransform: "uppercase" }}>{section.label}</h3>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-            {section.items.map(item => (
-              <span key={item} style={{
-                background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)",
-                color: "#ccc", padding: "7px 16px", borderRadius: 8, fontSize: 14, fontWeight: 500,
-              }}>{item}</span>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      <div style={{
-        background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
-        borderRadius: 14, padding: "24px 28px", display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center",
-      }}>
-        <span style={{ color: "#888", fontSize: 14, flex: 1 }}>Want to work together or have a question?</span>
-        <a href="mailto:pprajapati8965@gmail.com" style={{
-          background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
-          color: "#fff", textDecoration: "none", borderRadius: 8,
-          padding: "10px 22px", fontWeight: 700, fontSize: 14,
-        }}>Get in Touch</a>
+        {post.tags.map(t => (<span key={t} style={{ background: "rgba(62,207,207,0.08)", color: "#3ECFCF", fontSize: 12, padding: "5px 14px", borderRadius: 8, fontWeight: 600, border: "1px solid rgba(62,207,207,0.2)" }}>{t}</span>))}
       </div>
     </div>
   );
@@ -351,76 +382,249 @@ function AboutPage() {
 function BlogList({ onSelectPost }) {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-
   const filtered = POSTS.filter(p => {
     const matchCat = activeCategory === "All" || p.category === activeCategory;
-    const matchSearch = p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.excerpt.toLowerCase().includes(search.toLowerCase()) ||
-      p.tags.some(t => t.toLowerCase().includes(search.toLowerCase()));
+    const matchSearch = p.title.toLowerCase().includes(search.toLowerCase()) || p.excerpt.toLowerCase().includes(search.toLowerCase()) || p.tags.some(t => t.toLowerCase().includes(search.toLowerCase()));
     return matchCat && matchSearch;
   });
 
   return (
-    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "48px 24px" }} id="posts-section">
-      {/* Search */}
-      <div style={{ marginBottom: 32, display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }} id="posts-section">
+      <SectionHeading eyebrow="WRITING" title="Latest Articles" sub="Real-world backend engineering lessons from production systems" />
+
+      <div style={{ marginBottom: 28, display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
         <div style={{ position: "relative", flex: 1, minWidth: 220 }}>
           <span style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#555" }}><SearchIcon /></span>
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search articles, tags..."
-            style={{
-              width: "100%", background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.09)", borderRadius: 10,
-              padding: "12px 16px 12px 44px", color: "#ddd", fontSize: 14,
-              outline: "none", boxSizing: "border-box",
-            }}
-          />
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search articles, tags..." style={{
+            width: "100%", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.09)",
+            borderRadius: 10, padding: "12px 16px 12px 44px", color: "#ddd", fontSize: 14, outline: "none", boxSizing: "border-box",
+          }}/>
         </div>
       </div>
 
-      {/* Categories */}
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 36 }}>
         {CATEGORIES.map(cat => (
           <button key={cat} onClick={() => setActiveCategory(cat)} style={{
             background: activeCategory === cat ? "rgba(108,99,255,0.2)" : "rgba(255,255,255,0.04)",
             border: `1px solid ${activeCategory === cat ? "rgba(108,99,255,0.4)" : "rgba(255,255,255,0.08)"}`,
-            color: activeCategory === cat ? "#9d97ff" : "#888",
-            borderRadius: 100, padding: "7px 18px", cursor: "pointer",
-            fontSize: 13, fontWeight: 600, transition: "all 0.2s",
+            color: activeCategory === cat ? "#9d97ff" : "#888", borderRadius: 100, padding: "7px 18px",
+            cursor: "pointer", fontSize: 13, fontWeight: 600, transition: "all 0.2s",
           }}>{cat}</button>
         ))}
       </div>
 
-      {/* Post Grid */}
       {filtered.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "60px 0", color: "#555", fontSize: 16 }}>
-          No articles match your search.
-        </div>
+        <div style={{ textAlign: "center", padding: "60px 0", color: "#555", fontSize: 16 }}>No articles match your search.</div>
       ) : (
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))", gap: 24 }}>
-          {filtered.map(post => <PostCard key={post.id} post={post} onClick={onSelectPost} />)}
+          {filtered.map((post, i) => (
+            <Reveal key={post.id} delay={i * 0.05}>
+              <PostCard post={post} onClick={onSelectPost} />
+            </Reveal>
+          ))}
         </div>
       )}
     </div>
   );
 }
 
+function ProjectsSection() {
+  return (
+    <div style={{ maxWidth: 1100, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="PORTFOLIO" title="Featured Projects" sub="Production systems I've designed and built end-to-end" />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>
+        {PROJECTS.map((proj, i) => (
+          <Reveal key={proj.title} delay={i * 0.1}>
+            <ProjectCard proj={proj} />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function ProjectCard({ proj }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} style={{
+      background: "rgba(255,255,255,0.03)", border: `1px solid ${hovered ? "rgba(62,207,207,0.3)" : "rgba(255,255,255,0.07)"}`,
+      borderRadius: 16, padding: 28, transition: "all 0.25s", transform: hovered ? "translateY(-4px)" : "none",
+      boxShadow: hovered ? "0 16px 40px rgba(62,207,207,0.1)" : "none", height: "100%", boxSizing: "border-box",
+    }}>
+      <div style={{
+        width: 44, height: 44, borderRadius: 10, background: "linear-gradient(135deg, #6C63FF, #3ECFCF)",
+        display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 18, fontSize: 18, fontWeight: 800, color: "#fff",
+      }}>{proj.title.charAt(0)}</div>
+      <h3 style={{ color: "#f0f0f8", fontSize: 18, fontWeight: 700, margin: "0 0 10px" }}>{proj.title}</h3>
+      <p style={{ color: "#888", fontSize: 14, lineHeight: 1.7, margin: "0 0 16px" }}>{proj.desc}</p>
+      <div style={{ color: "#3ECFCF", fontSize: 12, fontWeight: 600, marginBottom: 18 }}>★ {proj.highlight}</div>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        {proj.tags.map(t => (<span key={t} style={{ background: "rgba(108,99,255,0.1)", color: "#9d97ff", fontSize: 11, padding: "4px 10px", borderRadius: 6, fontWeight: 600 }}>{t}</span>))}
+      </div>
+    </div>
+  );
+}
+
+function SkillsSection() {
+  return (
+    <div style={{ maxWidth: 760, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="EXPERTISE" title="Technical Skills" sub="Tools and technologies I work with daily" />
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        {SKILLS.map((skill, i) => (<Reveal key={skill.name} delay={i * 0.06}><SkillBar skill={skill} /></Reveal>))}
+      </div>
+    </div>
+  );
+}
+
+function SkillBar({ skill }) {
+  const [ref, visible] = useReveal();
+  return (
+    <div ref={ref}>
+      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
+        <span style={{ color: "#ddd", fontSize: 14, fontWeight: 600 }}>{skill.name}</span>
+        <span style={{ color: "#6C63FF", fontSize: 13, fontWeight: 700 }}>{skill.level}%</span>
+      </div>
+      <div style={{ height: 8, background: "rgba(255,255,255,0.06)", borderRadius: 100, overflow: "hidden" }}>
+        <div style={{
+          height: "100%", width: visible ? `${skill.level}%` : "0%",
+          background: "linear-gradient(90deg, #6C63FF, #3ECFCF)", borderRadius: 100,
+          transition: "width 1.1s cubic-bezier(0.22, 1, 0.36, 1)",
+        }}/>
+      </div>
+    </div>
+  );
+}
+
+function TimelineSection() {
+  return (
+    <div style={{ maxWidth: 700, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="JOURNEY" title="Experience & Education" />
+      <div style={{ position: "relative" }}>
+        <div style={{ position: "absolute", left: 7, top: 8, bottom: 8, width: 2, background: "linear-gradient(180deg, #6C63FF, rgba(108,99,255,0.1))" }}/>
+        {TIMELINE.map((item, i) => (
+          <Reveal key={item.title} delay={i * 0.12}>
+            <div style={{ position: "relative", paddingLeft: 36, marginBottom: 36 }}>
+              <div style={{
+                position: "absolute", left: 0, top: 4, width: 16, height: 16, borderRadius: "50%",
+                background: "linear-gradient(135deg, #6C63FF, #3ECFCF)", boxShadow: "0 0 0 4px rgba(108,99,255,0.15)",
+              }}/>
+              <div style={{ color: "#6C63FF", fontSize: 12, fontWeight: 700, letterSpacing: 0.5, marginBottom: 6 }}>{item.year}</div>
+              <h3 style={{ color: "#f0f0f8", fontSize: 17, fontWeight: 700, margin: "0 0 4px" }}>{item.title}</h3>
+              <div style={{ color: "#999", fontSize: 14, fontWeight: 500, marginBottom: 8 }}>{item.org}</div>
+              <p style={{ color: "#777", fontSize: 14, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div style={{ maxWidth: 760, margin: "0 auto", padding: "80px 24px" }}>
+      <SectionHeading eyebrow="ABOUT ME" title="The Developer Behind the Code" />
+      <Reveal>
+        <div style={{
+          background: "linear-gradient(135deg, rgba(108,99,255,0.1), rgba(62,207,207,0.05))",
+          border: "1px solid rgba(108,99,255,0.2)", borderRadius: 20, padding: "44px 36px",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 28, flexWrap: "wrap" }}>
+            <img src="https://via.placeholder.com/200x200/14141f/6C63FF?text=PP" alt="Pradeep" style={{
+              width: 72, height: 72, borderRadius: 16, objectFit: "cover", flexShrink: 0,
+              border: "2px solid rgba(108,99,255,0.3)",
+            }}/>
+            <div>
+              <h3 style={{ color: "#f0f0f8", fontSize: 24, fontWeight: 800, margin: "0 0 6px" }}>Pradeep Prajapati</h3>
+              <p style={{ color: "#6C63FF", fontWeight: 600, margin: 0, fontSize: 15 }}>Full-Stack Developer · Backend Specialist</p>
+              <p style={{ color: "#555", fontSize: 13, margin: "4px 0 0" }}>Neemuch, Madhya Pradesh, India</p>
+            </div>
+          </div>
+          <p style={{ color: "#888", lineHeight: 1.8, fontSize: 16, margin: 0 }}>
+            Full Stack Developer with 2+ years of experience specializing in backend development. I've built high-volume SMS gateway platforms, microservices architectures, and CRM systems in production. I write about the real challenges of backend engineering — architecture decisions, performance tradeoffs, and practical patterns that work at scale.
+          </p>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
+
+function ContactSection() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    <div style={{ maxWidth: 640, margin: "0 auto", padding: "80px 24px 100px" }}>
+      <SectionHeading eyebrow="GET IN TOUCH" title="Let's Work Together" sub="Have a project in mind or just want to say hi? Reach out." />
+
+      <Reveal>
+        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 40 }}>
+          <a href="mailto:pprajapati8965@gmail.com" style={{
+            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
+            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
+          }}><MailIcon /> pprajapati8965@gmail.com</a>
+          <a href="tel:+919098925163" style={{
+            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
+            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
+          }}><PhoneIcon /> +91-909-892-5163</a>
+          <a href="https://www.linkedin.com/in/pradeep-prajapati163/" target="_blank" rel="noreferrer" style={{
+            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
+            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
+            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
+          }}><LinkedinIcon /> LinkedIn</a>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.1}>
+        {sent ? (
+          <div style={{
+            textAlign: "center", padding: "40px 24px", background: "rgba(62,207,207,0.06)",
+            border: "1px solid rgba(62,207,207,0.25)", borderRadius: 16,
+          }}>
+            <div style={{ fontSize: 32, marginBottom: 12 }}>✓</div>
+            <h3 style={{ color: "#f0f0f8", margin: "0 0 8px", fontSize: 18 }}>Message ready to send!</h3>
+            <p style={{ color: "#888", fontSize: 14, margin: 0 }}>
+              This is a demo form. To receive real messages, connect it to{" "}
+              <a href="mailto:pprajapati8965@gmail.com" style={{ color: "#6C63FF" }}>your email</a>{" "}
+              or a service like Formspree.
+            </p>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Your name" style={inputStyle}/>
+            <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Your email" style={inputStyle}/>
+            <textarea required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Your message" rows={5} style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit" }}/>
+            <button type="submit" style={{
+              background: "linear-gradient(135deg, #6C63FF, #3ECFCF)", border: "none", borderRadius: 10,
+              padding: "14px 28px", color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
+            }}>Send Message</button>
+          </form>
+        )}
+      </Reveal>
+    </div>
+  );
+}
+
+const inputStyle = {
+  background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)",
+  borderRadius: 10, padding: "13px 16px", color: "#ddd", fontSize: 14, outline: "none", boxSizing: "border-box",
+};
+
 function Footer() {
   return (
-    <footer style={{
-      borderTop: "1px solid rgba(255,255,255,0.06)",
-      padding: "32px 24px", textAlign: "center",
-      background: "rgba(0,0,0,0.3)",
-    }}>
+    <footer style={{ borderTop: "1px solid rgba(255,255,255,0.06)", padding: "32px 24px", textAlign: "center", background: "rgba(0,0,0,0.3)" }}>
       <p style={{ color: "#444", fontSize: 13, margin: 0 }}>
         Built with React · Pradeep Prajapati · {" "}
-        <a href="https://www.linkedin.com/in/pradeep-prajapati163/" target="_blank" rel="noreferrer"
-          style={{ color: "#6C63FF", textDecoration: "none" }}>LinkedIn</a>
+        <a href="https://www.linkedin.com/in/pradeep-prajapati163/" target="_blank" rel="noreferrer" style={{ color: "#6C63FF", textDecoration: "none" }}>LinkedIn</a>
         {" · "}
-        <a href="mailto:pprajapati8965@gmail.com"
-          style={{ color: "#6C63FF", textDecoration: "none" }}>Email</a>
+        <a href="mailto:pprajapati8965@gmail.com" style={{ color: "#6C63FF", textDecoration: "none" }}>Email</a>
       </p>
     </footer>
   );
@@ -432,18 +636,21 @@ export default function App() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   const navigate = (p) => { setPage(p); setSelectedPost(null); window.scrollTo(0, 0); };
-
   const handleSelectPost = (post) => { setSelectedPost(post); setPage("post"); window.scrollTo(0, 0); };
 
   return (
     <div style={{ minHeight: "100vh", background: "#0a0a12", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
       <Navbar onNavigate={navigate} currentPage={page} />
       {page === "home" && <>
-        <Hero />
+        <Hero onNavigate={navigate} />
         <BlogList onSelectPost={handleSelectPost} />
       </>}
       {page === "post" && selectedPost && <PostDetail post={selectedPost} onBack={() => navigate("home")} />}
+      {page === "projects" && <ProjectsSection />}
+      {page === "skills" && <SkillsSection />}
+      {page === "timeline" && <TimelineSection />}
       {page === "about" && <AboutPage />}
+      {page === "contact" && <ContactSection />}
       <Footer />
     </div>
   );
