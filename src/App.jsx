@@ -315,7 +315,7 @@ function Hero({ onNavigate }) {
             padding: 3, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 50px rgba(108,99,255,0.25)",
           }}>
             <img
-              src="https://via.placeholder.com/300x300/14141f/6C63FF?text=PP"
+              src="/my-blog/profile.jpg"
               alt="Pradeep Prajapati"
               style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover", display: "block", border: "3px solid #0a0a12" }}
             />
@@ -747,7 +747,7 @@ function AboutPage() {
           border: "1px solid rgba(108,99,255,0.2)", borderRadius: 20, padding: "44px 36px",
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 28, flexWrap: "wrap" }}>
-            <img src="https://via.placeholder.com/200x200/14141f/6C63FF?text=PP" alt="Pradeep" style={{
+            <img src="/my-blog/profile.jpg" alt="Pradeep" style={{
               width: 72, height: 72, borderRadius: 16, objectFit: "cover", flexShrink: 0,
               border: "2px solid rgba(108,99,255,0.3)",
             }}/>
