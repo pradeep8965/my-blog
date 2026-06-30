@@ -107,16 +107,16 @@ const TIMELINE = [
 // EDIT THIS: Replace with real testimonials from colleagues/clients when you have them.
 const TESTIMONIALS = [
   {
-    name: "Add a colleague's name",
+    name: "Anil Dollor",
     role: "Team Lead, Dollor Infotech",
-    quote: "Replace this with a real quote about working with Pradeep - his reliability, technical skill, or problem-solving ability.",
-    initial: "?",
+    quote: "Pradeep consistently delivered high-quality work with excellent attention to detail. His ability to quickly understand requirements, solve complex technical challenges, and maintain clean, scalable code made him a valuable member of our team. He is dependable, proactive, and always willing to go the extra mile.",
+    initial: "A",
   },
   {
-    name: "Add a client's name",
+    name: "John Doe",
     role: "Project Client",
-    quote: "Replace this with feedback from a client project, e.g. about the CRM or chatbot work.",
-    initial: "?",
+    quote: "Working with Pradeep was a smooth and professional experience. He understood our business needs, communicated clearly throughout the project, and delivered a reliable solution on time. His technical expertise and commitment to quality exceeded our expectations, and I would gladly work with him again.",
+    initial: "J",
   },
 ];
 
