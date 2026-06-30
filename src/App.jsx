@@ -239,7 +239,7 @@ function Hero({ onNavigate }) {
             padding: 3, boxShadow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 50px rgba(108,99,255,0.25)",
           }}>
             <img
-              src="/my-blog/profile.png"
+              src="https://via.placeholder.com/300x300/14141f/6C63FF?text=PP"
               alt="Pradeep Prajapati"
               style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover", display: "block", border: "3px solid #0a0a12" }}
             />
@@ -530,7 +530,7 @@ function AboutPage() {
           border: "1px solid rgba(108,99,255,0.2)", borderRadius: 20, padding: "44px 36px",
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 28, flexWrap: "wrap" }}>
-            <img src="/my-blog/profile.png" alt="Pradeep" style={{
+            <img src="https://via.placeholder.com/200x200/14141f/6C63FF?text=PP" alt="Pradeep" style={{
               width: 72, height: 72, borderRadius: 16, objectFit: "cover", flexShrink: 0,
               border: "2px solid rgba(108,99,255,0.3)",
             }}/>
@@ -549,13 +549,51 @@ function AboutPage() {
   );
 }
 
-function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [sent, setSent] = useState(false);
+// ⚠️ STEP REQUIRED: Replace this with YOUR Formspree endpoint.
+// 1. Go to https://formspree.io and sign up free
+// 2. Create a new form, it gives you a URL like: https://formspree.io/f/abcd1234
+// 3. Paste that URL below
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xpqgjdrb";
 
-  const handleSubmit = (e) => {
+// Your WhatsApp number in international format, no + or spaces
+const WHATSAPP_NUMBER = "919098925163";
+
+const WhatsAppIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12.001 2C6.477 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5.001L2 22l5.143-1.323A9.953 9.953 0 0 0 12.001 22C17.524 22 22 17.523 22 12S17.524 2 12.001 2zm0 18.07a8.04 8.04 0 0 1-4.103-1.122l-.294-.175-3.05.784.82-2.97-.192-.306A8.05 8.05 0 1 1 20.05 12.01 8.06 8.06 0 0 1 12 20.07z"/>
+  </svg>
+);
+
+function ContactSection() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", budget: "", subject: "", message: "" });
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
+
+  const update = (field) => (e) => setForm({ ...form, [field]: e.target.value });
+
+  const handleEmailSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
+    if (FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
+      alert("Formspree isn't connected yet — see the comment at the top of ContactSection in the code.");
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) setStatus("sent");
+      else setStatus("error");
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const whatsappHref = () => {
+    const text = `Hi Pradeep, I'm ${form.name || "[name]"}.%0A%0AEmail: ${form.email || "-"}%0APhone: ${form.phone || "-"}%0ACompany: ${form.company || "-"}%0ABudget: ${form.budget || "-"}%0ASubject: ${form.subject || "-"}%0A%0AMessage: ${form.message || "-"}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
   };
 
   return (
@@ -564,53 +602,79 @@ function ContactSection() {
 
       <Reveal>
         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 40 }}>
-          <a href="mailto:pprajapati8965@gmail.com" style={{
-            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
-            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
-          }}><MailIcon /> pprajapati8965@gmail.com</a>
-          <a href="tel:+919098925163" style={{
-            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
-            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
-          }}><PhoneIcon /> +91-909-892-5163</a>
-          <a href="https://www.linkedin.com/in/pradeep-prajapati163/" target="_blank" rel="noreferrer" style={{
-            display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
-            border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
-            color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
-          }}><LinkedinIcon /> LinkedIn</a>
+          <a href="mailto:pprajapati8965@gmail.com" style={pillStyle}><MailIcon /> pprajapati8965@gmail.com</a>
+          <a href="tel:+919098925163" style={pillStyle}><PhoneIcon /> +91-909-892-5163</a>
+          <a href="https://www.linkedin.com/in/pradeep-prajapati163/" target="_blank" rel="noreferrer" style={pillStyle}><LinkedinIcon /> LinkedIn</a>
         </div>
       </Reveal>
 
       <Reveal delay={0.1}>
-        {sent ? (
-          <div style={{
-            textAlign: "center", padding: "40px 24px", background: "rgba(62,207,207,0.06)",
-            border: "1px solid rgba(62,207,207,0.25)", borderRadius: 16,
-          }}>
+        {status === "sent" ? (
+          <div style={{ textAlign: "center", padding: "40px 24px", background: "rgba(62,207,207,0.06)", border: "1px solid rgba(62,207,207,0.25)", borderRadius: 16 }}>
             <div style={{ fontSize: 32, marginBottom: 12 }}>✓</div>
-            <h3 style={{ color: "#f0f0f8", margin: "0 0 8px", fontSize: 18 }}>Message ready to send!</h3>
-            <p style={{ color: "#888", fontSize: 14, margin: 0 }}>
-              This is a demo form. To receive real messages, connect it to{" "}
-              <a href="mailto:pprajapati8965@gmail.com" style={{ color: "#6C63FF" }}>your email</a>{" "}
-              or a service like Formspree.
-            </p>
+            <h3 style={{ color: "#f0f0f8", margin: "0 0 8px", fontSize: 18 }}>Message sent!</h3>
+            <p style={{ color: "#888", fontSize: 14, margin: 0 }}>Thanks for reaching out — I'll get back to you soon.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Your name" style={inputStyle}/>
-            <input required type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="Your email" style={inputStyle}/>
-            <textarea required value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} placeholder="Your message" rows={5} style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit" }}/>
-            <button type="submit" style={{
-              background: "linear-gradient(135deg, #6C63FF, #3ECFCF)", border: "none", borderRadius: 10,
-              padding: "14px 28px", color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
-            }}>Send Message</button>
+          <form onSubmit={handleEmailSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="form-grid">
+              <input required value={form.name} onChange={update("name")} placeholder="Your name *" style={inputStyle}/>
+              <input required type="email" value={form.email} onChange={update("email")} placeholder="Your email *" style={inputStyle}/>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="form-grid">
+              <input type="tel" value={form.phone} onChange={update("phone")} placeholder="Phone number (optional)" style={inputStyle}/>
+              <input value={form.company} onChange={update("company")} placeholder="Company / Organization (optional)" style={inputStyle}/>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }} className="form-grid">
+              <select value={form.budget} onChange={update("budget")} style={{ ...inputStyle, color: form.budget ? "#ddd" : "#666" }}>
+                <option value="">Budget range (optional)</option>
+                <option value="< $500">Under $500</option>
+                <option value="$500 - $1500">$500 - $1500</option>
+                <option value="$1500 - $5000">$1500 - $5000</option>
+                <option value="$5000+">$5000+</option>
+                <option value="Just exploring">Just exploring</option>
+              </select>
+              <input value={form.subject} onChange={update("subject")} placeholder="Subject (optional)" style={inputStyle}/>
+            </div>
+            <textarea required value={form.message} onChange={update("message")} placeholder="Your message *" rows={5} style={{ ...inputStyle, resize: "vertical", fontFamily: "inherit" }}/>
+
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <button type="submit" disabled={status === "sending"} style={{
+                flex: 1, minWidth: 180, background: "linear-gradient(135deg, #6C63FF, #3ECFCF)", border: "none", borderRadius: 10,
+                padding: "14px 28px", color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer",
+                opacity: status === "sending" ? 0.7 : 1,
+              }}>{status === "sending" ? "Sending..." : "Send via Email"}</button>
+
+              <a href={whatsappHref()} target="_blank" rel="noreferrer" onClick={(e) => { if (!form.name || !form.message) { e.preventDefault(); alert("Please fill in at least your name and message first."); } }} style={{
+                flex: 1, minWidth: 180, display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+                background: "#25D366", border: "none", borderRadius: 10, padding: "14px 28px",
+                color: "#fff", fontWeight: 700, fontSize: 15, cursor: "pointer", textDecoration: "none",
+              }}><WhatsAppIcon /> Send via WhatsApp</a>
+            </div>
+
+            {status === "error" && (
+              <p style={{ color: "#ff8080", fontSize: 13, textAlign: "center", margin: 0 }}>
+                Something went wrong sending the email. Please try WhatsApp instead, or email directly.
+              </p>
+            )}
           </form>
         )}
       </Reveal>
+
+      <style>{`
+        @media (max-width: 540px) {
+          .form-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </div>
   );
 }
+
+const pillStyle = {
+  display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.04)",
+  border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "10px 18px",
+  color: "#ccc", textDecoration: "none", fontSize: 13.5, fontWeight: 500,
+};
 
 const inputStyle = {
   background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)",
